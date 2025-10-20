@@ -1,0 +1,13 @@
+# ninja log v5
+6	2032	7554510176859515	ChartProcess_autogen/timestamp	7baa637ddb993ecb
+6	2032	7554510176859515	ChartProcess_autogen/mocs_compilation.cpp	7baa637ddb993ecb
+6	2032	7554510176859515	C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/ChartProcess_autogen/mocs_compilation.cpp	7baa637ddb993ecb
+7904	18204	7554510336948801	ChartProcess.exe	408d252a17537925
+6	2032	7554510176859515	C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/ChartProcess_autogen/timestamp	7baa637ddb993ecb
+2435	6549	7553526364423708	CMakeFiles/ChartProcess.dir/ChartDisplay.cpp.obj	78d9765339a3cf4c
+2139	6562	7554510225637239	CMakeFiles/ChartProcess.dir/chartmain.cpp.obj	2cff3b17e368ecd3
+2278	3783	7554510196474203	CMakeFiles/ChartProcess.dir/ZmqSubThread.cpp.obj	6e02334aa90cfe46
+2033	7904	7554510239517214	CMakeFiles/ChartProcess.dir/ChartProcess_autogen/mocs_compilation.cpp.obj	ceae6db8f60de5a7
+2650	13105	7553526429784869	CMakeFiles/ChartProcess.dir/qcustomplot.cpp.obj	176c0dd4bf8de0df
+2079	6741	7554510227927346	CMakeFiles/ChartProcess.dir/mainwindow.cpp.obj	f80a01c5ef38a183
+6	4164	7553526940738996	CMakeFiles/ChartProcess.dir/ChartDataSave/ChartDataSave.cpp.obj	6eed9c007ab0c06c

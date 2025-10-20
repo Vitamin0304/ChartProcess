@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Release-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.22"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ChartProcess",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ChartProcess::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ChartProcess-Release-76c6050dd7fa1e0fac6a.json",
+					"name" : "ChartProcess",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ChartProcess_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ChartProcess_autogen-Release-882a9252622f6efd2294.json",
+					"name" : "ChartProcess_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ChartProcess_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ChartProcess_autogen_timestamp_deps-Release-c34b8dc7a5312c329381.json",
+					"name" : "ChartProcess_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-release",
+		"source" : "C:/WorkSpace/Qt/ChartProcess"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

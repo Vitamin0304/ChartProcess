@@ -1,0 +1,198 @@
+{
+	"BUILD_DIR" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/ChartProcess_autogen",
+	"CMAKE_BINARY_DIR" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/WorkSpace/Qt/ChartProcess",
+	"CMAKE_EXECUTABLE" : "E:/software/CLion 2022.1.2/bin/cmake/win/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/WorkSpace/Qt/ChartProcess/CMakeLists.txt",
+		"C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/CMakeFiles/3.22.3/CMakeSystem.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake",
+		"C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/CMakeFiles/3.22.3/CMakeCCompiler.cmake",
+		"C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/CMakeFiles/3.22.3/CMakeCXXCompiler.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeGenericSystem.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/WindowsPaths.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeCInformation.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-C.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-C.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU.cmake",
+		"C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/CMakeFiles/3.22.3/CMakeRCCompiler.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeRCInformation.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-windres.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-C-ABI.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeCXXInformation.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU-CXX.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Compiler/GNU.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/Platform/Windows-GNU-CXX-ABI.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5/Qt5Config.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Core/Qt5CoreMacros.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeParseArguments.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QSvgPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QWindowsIntegrationPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5Gui_QXdgDesktopPortalThemePlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5Widgets_QWindowsVistaStylePlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeParseArguments.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5OpenGL/Qt5OpenGLConfigVersion.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5OpenGL/Qt5OpenGLConfig.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Sql/Qt5SqlConfigVersion.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Sql/Qt5SqlConfig.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Sql/Qt5Sql_QODBCDriverPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Sql/Qt5Sql_QPSQLDriverPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5Sql/Qt5Sql_QSQLiteDriverPlugin.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5SerialPort/Qt5SerialPortConfigVersion.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5SerialPort/Qt5SerialPortConfig.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5PrintSupport/Qt5PrintSupportConfigVersion.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5PrintSupport/Qt5PrintSupportConfig.cmake",
+		"C:/Qt/5.15.2/mingw81_64/lib/cmake/Qt5PrintSupport/Qt5PrintSupport_QWindowsPrinterSupportPlugin.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/WorkSpace/Qt/ChartProcess",
+	"DEP_FILE" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/ChartProcess_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "ChartProcess_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"C:/WorkSpace/Qt/ChartProcess/ChartDataSave/ChartDataSave.h",
+			"MU",
+			"YIAAVW4WF7/moc_ChartDataSave.cpp",
+			null
+		],
+		[
+			"C:/WorkSpace/Qt/ChartProcess/ChartDisplay.h",
+			"MU",
+			"EWIEGA46WW/moc_ChartDisplay.cpp",
+			null
+		],
+		[
+			"C:/WorkSpace/Qt/ChartProcess/ZmqSubThread.h",
+			"MU",
+			"EWIEGA46WW/moc_ZmqSubThread.cpp",
+			null
+		],
+		[
+			"C:/WorkSpace/Qt/ChartProcess/mainwindow.h",
+			"MU",
+			"EWIEGA46WW/moc_mainwindow.cpp",
+			null
+		],
+		[
+			"C:/WorkSpace/Qt/ChartProcess/qcustomplot.h",
+			"MU",
+			"EWIEGA46WW/moc_qcustomplot.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/ChartProcess_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/ChartProcess_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QCUSTOMPLOT_USE_OPENGL=1",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_PRINTSUPPORT_LIB",
+		"QT_WIDGETS_LIB"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"C:/WorkSpace/eigen-3.3.9",
+		"C:/WorkSpace/Qt/zmq",
+		"C:/Qt/5.15.2/mingw81_64/include",
+		"C:/Qt/5.15.2/mingw81_64/include/QtCore",
+		"C:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++",
+		"C:/Qt/5.15.2/mingw81_64/include/QtGui",
+		"C:/Qt/5.15.2/mingw81_64/include/QtANGLE",
+		"C:/Qt/5.15.2/mingw81_64/include/QtWidgets",
+		"C:/Qt/5.15.2/mingw81_64/include/QtPrintSupport",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+		"C:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+		"C:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"C:/Qt/Tools/mingw810_64/bin/c++.exe",
+		"-dM",
+		"-E",
+		"-c",
+		"E:/software/CLion 2022.1.2/bin/cmake/win/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/ChartProcess_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 14,
+	"PARSE_CACHE_FILE" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/CMakeFiles/ChartProcess_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/Qt/5.15.2/mingw81_64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "C:/Qt/5.15.2/mingw81_64/bin/uic.exe",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "C:/WorkSpace/Qt/ChartProcess/cmake-build-debug/CMakeFiles/ChartProcess_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"C:/WorkSpace/Qt/ChartProcess/ChartDataSave/ChartDataSave.cpp",
+			"MU",
+			null
+		],
+		[ "C:/WorkSpace/Qt/ChartProcess/ChartDisplay.cpp", "MU", null ],
+		[ "C:/WorkSpace/Qt/ChartProcess/ZmqSubThread.cpp", "MU", null ],
+		[ "C:/WorkSpace/Qt/ChartProcess/chartmain.cpp", "MU", null ],
+		[ "C:/WorkSpace/Qt/ChartProcess/mainwindow.cpp", "MU", null ],
+		[ "C:/WorkSpace/Qt/ChartProcess/qcustomplot.cpp", "MU", null ]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

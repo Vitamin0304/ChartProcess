@@ -1,0 +1,5 @@
+C:/WorkSpace/Qt/ChartProcess/cmake-build-release/CMakeFiles/ChartProcess.dir
+C:/WorkSpace/Qt/ChartProcess/cmake-build-release/CMakeFiles/edit_cache.dir
+C:/WorkSpace/Qt/ChartProcess/cmake-build-release/CMakeFiles/rebuild_cache.dir
+C:/WorkSpace/Qt/ChartProcess/cmake-build-release/CMakeFiles/ChartProcess_autogen_timestamp_deps.dir
+C:/WorkSpace/Qt/ChartProcess/cmake-build-release/CMakeFiles/ChartProcess_autogen.dir
