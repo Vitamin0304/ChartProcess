@@ -1,30 +1,22 @@
 cmake_minimum_required(VERSION 3.22)
-project(ChartProcess)
+project(ChartProcess LANGUAGES CXX)
 
-add_compile_definitions(QCUSTOMPLOT_USE_OPENGL=1)
-
+# ---------- 基础设置 ----------
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-set(CMAKE_PREFIX_PATH "E:/software/Qt6/6.10.0/mingw_64/lib/cmake")
+# ---------- MinGW Debug：用 split-dwarf 给 .o 瘦身 ----------
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_options(-g -gsplit-dwarf)   # 调试信息 -> .dwo
+endif()
 
-find_package(Qt6 COMPONENTS
-        Core
-        Gui
-        Widgets
-        REQUIRED)
+# 让 CMake 先找到 Qt6
+set(CMAKE_PREFIX_PATH "E:/software/Qt6/6.10.0/mingw_64")
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui PrintSupport OpenGL OpenGLWidgets Sql)
 
-find_package(Qt6OpenGL REQUIRED)
-#find_package(GLUT REQUIRED)
-FIND_PACKAGE(Qt6Sql REQUIRED)
-#FIND_PACKAGE(Qt6SerialPort REQUIRED)
-FIND_PACKAGE(Qt6PrintSupport REQUIRED)
-
-link_directories(E:/software/Qt6/6.10.0/mingw_64/lib)
-link_directories(C:/WorkSpace/Qt/zmq)
-
+# ---------- 可执行文件 ----------
 add_executable(ChartProcess
         chartmain.cpp
         mainwindow.cpp
@@ -39,57 +31,47 @@ add_executable(ChartProcess
         ChartDataSave/ChartDataSave.cpp
         ChartDataSave/ChartDataSave.h
         ChartDataSave/ChartDataSave.ui
-        )
+)
 
-target_link_libraries(ChartProcess
+# ---------- 编译定义 ----------
+target_compile_definitions(ChartProcess PRIVATE
+        QCUSTOMPLOT_USE_OPENGL      # 启用 QCustomPlot OpenGL 加速
+)
+
+# ---------- 头文件搜索路径 ----------
+target_include_directories(ChartProcess PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}          # 当前目录放 qcustomplot.h
+        C:/WorkSpace/eigen-3.3.9               # 你用的 Eigen
+        C:/WorkSpace/Qt/libzmq-mingw64-4_3_4                    # ZeroMQ 头文件
+)
+
+# ---------- 库目录（仅 ZeroMQ） ----------
+target_link_directories(ChartProcess PRIVATE
+        C:/WorkSpace/Qt/libzmq-mingw64-4_3_4                    # 放 64-bit libzmq.a / libzmq.dll.a
+)
+
+# ---------- 链接库 ----------
+target_link_libraries(ChartProcess PRIVATE
         Qt6::Core
-        Qt6::Gui
         Qt6::Widgets
+        Qt6::Gui
         Qt6::PrintSupport
-        )
+        Qt6::OpenGL
+        Qt6::OpenGLWidgets
+        Qt6::Sql
+        # 系统自带
+        opengl32
+        DbgHelp
+        # ZeroMQ（MinGW-64 版，名字举例）
+        zmq
+)
 
-# include
-include_directories(${OPENGL_INCLUDE_DIRS})
-include_directories(${GLUT_INCLUDE_DIRS})
-include_directories(C:/Qt/5.15.2/mingw81_64/include)
-include_directories(C:/WorkSpace/eigen-3.3.9)
-#include_directories(D:/WorkSpace/qcustomplot)
-# link
-#target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
-
-include_directories(C:/WorkSpace/Qt/zmq)
-
-target_link_libraries(ChartProcess freeglut)
-target_link_libraries(ChartProcess opengl32)
-target_link_libraries(ChartProcess DbgHelp)
-target_link_libraries(ChartProcess libzmq-v140-mt-4_3_4)
-target_link_libraries(ChartProcess libzmq-v140-mt-s-4_3_4)
-
-if (WIN32)
-    set(DEBUG_SUFFIX)
-    if (MSVC AND CMAKE_BUILD_TYPE MATCHES "Debug")
-        set(DEBUG_SUFFIX "d")
-    endif ()
-    set(QT_INSTALL_PATH "${CMAKE_PREFIX_PATH}")
-    if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
-        set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
-        if (NOT EXISTS "${QT_INSTALL_PATH}/bin")
-            set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
-        endif ()
-    endif ()
-    if (EXISTS "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll")
-        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E make_directory
-                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
-        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy
-                "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll"
-                "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
-    endif ()
-    foreach (QT_LIB Core)
-        add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy
-                "${QT_INSTALL_PATH}/bin/Qt5${QT_LIB}${DEBUG_SUFFIX}.dll"
-                "$<TARGET_FILE_DIR:${PROJECT_NAME}>")
-    endforeach (QT_LIB)
-endif ()
+# ---------- Win 下自动拷贝 Qt 运行时 ----------
+if(WIN32)
+    qt6_generate_deploy_app_script(
+            TARGET ChartProcess
+            OUTPUT_SCRIPT deploy_script
+            NO_UNSUPPORTED_PLATFORM_ERROR
+    )
+    install(SCRIPT ${deploy_script})
+endif()

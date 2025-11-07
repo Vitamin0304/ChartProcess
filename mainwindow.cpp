@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     timer1 = new QTimer(this);
     timer1->setInterval(60);
+    timer1->setObjectName("timer1");
     QObject::connect(timer1, &QTimer::timeout, this, &MainWindow::on_timer1_timeout, Qt::QueuedConnection);
 
     chart1 = new ChartDisplay(this, ui->chart1, nullptr,

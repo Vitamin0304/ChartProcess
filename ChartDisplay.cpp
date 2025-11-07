@@ -39,11 +39,11 @@ ChartDisplay::ChartDisplay(QWidget* parent, QCustomPlot* customPlot, QScrollBar*
 
     xShowRange = pCustomPlot->xAxis->range();
 
-    QFont font(QString::fromUtf8("Microsoft YaHei"), 9);
-    pCustomPlot->xAxis->setLabelFont(font);
-    pCustomPlot->xAxis->setTickLabelFont(font);
-    pCustomPlot->yAxis->setLabelFont(font);
-    pCustomPlot->yAxis->setTickLabelFont(font);
+    // QFont font(QString::fromUtf8("Microsoft YaHei"), 9);
+    // pCustomPlot->xAxis->setLabelFont(font);
+    // pCustomPlot->xAxis->setTickLabelFont(font);
+    // pCustomPlot->yAxis->setLabelFont(font);
+    // pCustomPlot->yAxis->setTickLabelFont(font);
 
     pCustomPlot->xAxis->setNumberFormat("f");
     pCustomPlot->xAxis->setNumberPrecision(3);
@@ -72,8 +72,8 @@ ChartDisplay::ChartDisplay(QWidget* parent, QCustomPlot* customPlot, QScrollBar*
     tracerLabel->position->setCoords(110,52);
     tracerLabel->setVisible(false);
 
-    QFont font2(QString::fromUtf8("Microsoft YaHei"), 8);
-    tracerLabel->setFont(font2);
+    // QFont font2(QString::fromUtf8("Microsoft YaHei"), 8);
+    // tracerLabel->setFont(font2);
 
     //设置Y轴范围
     pCustomPlot->yAxis->setRange(-3, 30);
@@ -104,7 +104,7 @@ ChartDisplay::ChartDisplay(QWidget* parent, QCustomPlot* customPlot, QScrollBar*
     subLayout->addElement(0,1,pCustomPlot->legend);
     subLayout->addElement(0,2,new QCPLayoutElement);
 
-    pCustomPlot->legend->setFont(font);
+    // pCustomPlot->legend->setFont(font);
     pCustomPlot->plotLayout()->setRowStretchFactor(0, 0.001);
     pCustomPlot->legend->setVisible(true);
     pCustomPlot->legend->setBorderPen(Qt::NoPen);
