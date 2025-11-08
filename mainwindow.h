@@ -24,7 +24,9 @@ public:
     ChartDisplay* chart2 = nullptr;
     ChartDisplay* chart3 = nullptr;
     ChartDisplay* chart4 = nullptr;
-    QThread* chartThread[4];
+    ChartDisplay* chart5 = nullptr;
+    ChartDisplay* chart6 = nullptr;
+    QThread* chartThread[6];
     QVector<ChartDisplay*> chartList;
     QVector<QStringList> chartNamesList;
     QVector<QColor> colorList;

@@ -24,62 +24,23 @@
        <string>曲线显示</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <property name="sizeConstraint">
-        <enum>QLayout::SizeConstraint::SetMinAndMaxSize</enum>
-       </property>
-       <item row="1" column="1">
-        <widget class="QCustomPlot" name="chart3" native="true"/>
-       </item>
-       <item row="2" column="0">
-        <widget class="QCustomPlot" name="chart2" native="true"/>
-       </item>
-       <item row="1" column="0">
+       <item row="0" column="0">
         <widget class="QCustomPlot" name="chart1" native="true"/>
        </item>
        <item row="0" column="1">
-        <widget class="QLabel" name="label_56">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>宋体</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>俯仰轴状态</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
+        <widget class="QCustomPlot" name="chart4" native="true"/>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_55">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>20</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>宋体</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>方位轴状态</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignmentFlag::AlignCenter</set>
-         </property>
-        </widget>
+       <item row="1" column="0">
+        <widget class="QCustomPlot" name="chart2" native="true"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCustomPlot" name="chart5" native="true"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QCustomPlot" name="chart3" native="true"/>
        </item>
        <item row="2" column="1">
-        <widget class="QCustomPlot" name="chart4" native="true"/>
+        <widget class="QCustomPlot" name="chart6" native="true"/>
        </item>
       </layout>
      </widget>

@@ -70,6 +70,17 @@ struct WebotsData
     float missDistance[2] = {0};
 };
 
+struct Pose6D {
+    double x, y, z;
+    double ax, ay, az;
+};
+struct RobotPoseFrame {
+    double timestamp;
+    Pose6D error;
+    Pose6D cmd;
+    Pose6D now;
+};
+
 class ZmqSubThread : public QThread
 {
     Q_OBJECT
@@ -84,6 +95,7 @@ signals:
     void receiveStateDataSignal(DisplayDataStruct  displayData);
     void receiveATPDataSignal   (ATPSensorData     atpData);
     void receiveWebotsDataSignal(WebotsData        webotsData);
+    void receiveRobotPoseSignal(RobotPoseFrame   robotPose);
 
 private:
     volatile bool m_stop = false;   // 用于打断循环

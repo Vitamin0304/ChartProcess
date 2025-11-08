@@ -25,8 +25,11 @@ MainWindow::MainWindow(QWidget *parent)
                               ui->clearButton, ui->manualButton, ui->translationButton, ui->stretchButton);
     chart4 = new ChartDisplay(this, ui->chart4, nullptr,
                               ui->clearButton, ui->manualButton, ui->translationButton, ui->stretchButton);
-
-    chartList << chart1 << chart2 << chart3 << chart4;
+    chart5 = new ChartDisplay(this, ui->chart5, nullptr,
+                              ui->clearButton, ui->manualButton, ui->translationButton, ui->stretchButton);
+    chart6 = new ChartDisplay(this, ui->chart6, nullptr,
+                              ui->clearButton, ui->manualButton, ui->translationButton, ui->stretchButton);
+    chartList << chart1 << chart2 << chart3 << chart4 << chart5 << chart6;
 
     for(auto* chartDisplay : chartList)
     {
@@ -40,10 +43,14 @@ MainWindow::MainWindow(QWidget *parent)
         t = new QThread();
     }
 
-    chart1->setLabel("时间（s）", "方位轴");
-    chart2->setLabel("时间（s）", "方位轴");
-    chart3->setLabel("时间（s）", "俯仰轴");
-    chart4->setLabel("时间（s）", "俯仰轴");
+    chart1->setLabel("", "x");
+    chart2->setLabel("", "y");
+    chart3->setLabel("", "z");
+    chart4->setLabel("", "axis_angle_x");
+    chart5->setLabel("", "axis_angle_y");
+    chart6->setLabel("", "axis_angle_z");
+
+
 
 //    chart1->moveToThread(chartThread[0]);
 //    chart2->moveToThread(chartThread[1]);
@@ -54,10 +61,12 @@ MainWindow::MainWindow(QWidget *parent)
     qRegisterMetaType<QCPRange>("QCPRange&");
 
     //根据变量更改
-    QStringList motor1Names = {"输入", "速度", "位置", "力矩指令", "偏差", "角度引导"};  //chart0
-    QStringList motor2Names = {"输入", "速度", "位置", "力矩指令", "偏差", "角度引导"}; //chart2
-    QStringList error1Name = {"横向脱靶量", "陀螺仪Z角速度", "cpu"};  //chart1
-    QStringList error2Name = {"纵向脱靶量", "陀螺仪X角速度", "陀螺仪Y角速度", "ATP状态"};  //chart3
+    // QStringList motor1Names = {"输入", "速度", "位置", "力矩指令", "偏差", "角度引导"};  //chart0
+    // QStringList motor2Names = {"输入", "速度", "位置", "力矩指令", "偏差", "角度引导"}; //chart2
+    // QStringList error1Name = {"横向脱靶量", "陀螺仪Z角速度", "cpu"};  //chart1
+    // QStringList error2Name = {"纵向脱靶量", "陀螺仪X角速度", "陀螺仪Y角速度", "ATP状态"};  //chart3
+
+    QStringList robotNames = {"指令", "状态", "误差"};
 
     colorList.append(Qt::red);
     colorList.append(Qt::blue);
@@ -66,14 +75,14 @@ MainWindow::MainWindow(QWidget *parent)
     colorList.append(QColor(255, 151, 0));
     colorList.append(Qt::green);
 
-    chartNamesList << motor1Names << error1Name << motor2Names  << error2Name;
-    int chartNum = chartNamesList.count();
+    // chartNamesList << motor1Names << error1Name << motor2Names  << error2Name;
+    int chartNum = chartList.length();
     for(int i = 0; i < chartNum; i++)
     {
-        int graphNum = chartNamesList[i].count();
+        int graphNum = robotNames.count();
         for(int j = 0; j < graphNum; j++)
         {
-            chartList[i]->addGraph(chartNamesList[i][j], colorList[j]);
+            chartList[i]->addGraph(robotNames[j], colorList[j]);
         }
     }
 
@@ -99,33 +108,32 @@ MainWindow::MainWindow(QWidget *parent)
     zmqSubThread = new ZmqSubThread(this);
     connect(zmqSubThread, &ZmqSubThread::finished, zmqSubThread, &QObject::deleteLater);
 
-    qRegisterMetaType<DisplayDataStruct>("DisplayDataStruct");
-    qRegisterMetaType<ATPSensorData>("ATPSensorData");
-    qRegisterMetaType<WebotsData>("WebotsData");
-    connect(zmqSubThread, &ZmqSubThread::receiveStateDataSignal, this, &MainWindow::receiveStateData);
-    connect(zmqSubThread, &ZmqSubThread::receiveATPDataSignal, this, &MainWindow::receiveATPData);
-    connect(zmqSubThread, &ZmqSubThread::receiveWebotsDataSignal, this, [this](WebotsData webotsData)
+    qRegisterMetaType<RobotPoseFrame>("RobotPoseFrame");
+    connect(zmqSubThread, &ZmqSubThread::receiveRobotPoseSignal, this, [this](RobotPoseFrame robotPose)
     {
-        emit chartList[0]->addDataSignal(0, webotsData.dspTime, webotsData.input[0]);
-        emit chartList[0]->addDataSignal(1, webotsData.dspTime, webotsData.speed[0]);
-        emit chartList[0]->addDataSignal(2, webotsData.dspTime, webotsData.position[0]);
-        emit chartList[0]->addDataSignal(3, webotsData.dspTime, webotsData.torque[0]);
-        emit chartList[0]->addDataSignal(4, webotsData.dspTime, webotsData.error[0]);
+        emit chartList[0]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.x);
+        emit chartList[0]->addDataSignal(1, robotPose.timestamp, robotPose.now.x);
+        emit chartList[0]->addDataSignal(2, robotPose.timestamp, robotPose.error.x);
 
-        emit chartList[2]->addDataSignal(0, webotsData.dspTime, webotsData.input[1]);
-        emit chartList[2]->addDataSignal(1, webotsData.dspTime, webotsData.speed[1]);
-        emit chartList[2]->addDataSignal(2, webotsData.dspTime, webotsData.position[1]);
-        emit chartList[2]->addDataSignal(3, webotsData.dspTime, webotsData.torque[1]);
-        emit chartList[2]->addDataSignal(4, webotsData.dspTime, webotsData.error[1]);
+        emit chartList[1]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.y);
+        emit chartList[1]->addDataSignal(1, robotPose.timestamp, robotPose.now.y);
+        emit chartList[1]->addDataSignal(2, robotPose.timestamp, robotPose.error.y);
 
-        emit chartList[1]->addDataSignal(0, webotsData.dspTime, webotsData.missDistance[0]);
-        emit chartList[3]->addDataSignal(0, webotsData.dspTime, webotsData.missDistance[1]);
-        emit chartList[0]->addDataSignal(5, webotsData.dspTime, webotsData.guidePos[0]);
-        emit chartList[2]->addDataSignal(5, webotsData.dspTime, webotsData.guidePos[1]);
+        emit chartList[2]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.z);
+        emit chartList[2]->addDataSignal(1, robotPose.timestamp, robotPose.now.z);
+        emit chartList[2]->addDataSignal(2, robotPose.timestamp, robotPose.error.z);
 
-        emit chartList[3]->addDataSignal(1, webotsData.dspTime, webotsData.omega[0]);
-        emit chartList[3]->addDataSignal(2, webotsData.dspTime, webotsData.omega[1]);
-        emit chartList[1]->addDataSignal(1, webotsData.dspTime, webotsData.omega[2]);
+        emit chartList[3]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.ax);
+        emit chartList[3]->addDataSignal(1, robotPose.timestamp, robotPose.now.ax);
+        emit chartList[3]->addDataSignal(2, robotPose.timestamp, robotPose.error.ax);
+
+        emit chartList[4]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.ay);
+        emit chartList[4]->addDataSignal(1, robotPose.timestamp, robotPose.now.ay);
+        emit chartList[4]->addDataSignal(2, robotPose.timestamp, robotPose.error.ay);
+
+        emit chartList[5]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.az);
+        emit chartList[5]->addDataSignal(1, robotPose.timestamp, robotPose.now.az);
+        emit chartList[5]->addDataSignal(2, robotPose.timestamp, robotPose.error.az);
     });
 
     zmqSubThread->start();
