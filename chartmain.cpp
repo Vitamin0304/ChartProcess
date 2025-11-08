@@ -10,8 +10,12 @@
 int main(int argc, char *argv[])
 {
     // glutInit(&argc, argv);
+    // QCoreApplication::setAttribute(Qt::AA_DisableHighDpiScaling); // 1. 关自动缩放
+    // QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, false); // 2. 关高分 pixmap
 
     QApplication a(argc, argv);
+
+    // QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 
     // QTranslator translator;
     // const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -22,22 +26,15 @@ int main(int argc, char *argv[])
     //         break;
     //     }
     // }
-    // // must give an absolute path to the "theme" folder
-    // QDir::addSearchPath("icon", QDir::currentPath() + "/theme");
-    //
-    // QStringList dirs = QDir::searchPaths("icon");
-    //
-    // qDebug() << dirs[0];
-    //
-    // QFile file("my_theme.qss");
-    // file.open(QFile::ReadOnly);
-    //
-    // QString styleSheet { file.readAll() };
-    // qApp->setStyleSheet(styleSheet);
 
+    QFile file("my_theme.qss");
+    file.open(QFile::ReadOnly);
 
-    // QFont font("微软雅黑",11);
-    // QApplication::setFont(font);
+    QString styleSheet { file.readAll() };
+    qApp->setStyleSheet(styleSheet);
+
+    QFont font("微软雅黑",11);
+    QApplication::setFont(font);
 
     MainWindow w;
     w.setWindowState(Qt::WindowMaximized);

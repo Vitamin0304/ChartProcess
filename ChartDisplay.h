@@ -7,8 +7,8 @@ class ChartDisplay : public QObject
 {
 	Q_OBJECT
 private:
-	QWidget* parent;  //显示图像的label对象
-	QScrollBar* hScrollBar;  //横滚条
+	QWidget* parent{};  //显示图像的label对象
+	QScrollBar* hScrollBar{};  //横滚条
 	const uint32_t H_SCROLL_BAR_SUM = 1000;  //横滚条总量
 
 	QRadioButton* manualButton;        //手动选项

@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // fixGLViewport();        // 第一次显示前修正
+
     timer1 = new QTimer(this);
     timer1->setInterval(60);
     timer1->setObjectName("timer1");
@@ -222,3 +224,33 @@ void MainWindow::saveChartData(QVector<QCustomPlot *> chartList)
     chartDataSaveWindow->setWindowState((chartDataSaveWindow->windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
     chartDataSaveWindow->setCharts(std::move(chartList));
 }
+
+// void MainWindow::resizeEvent(QResizeEvent *event)
+// {
+//     QMainWindow::resizeEvent(event);
+//     fixGLViewport();        // 大小一变就修正
+// }
+//
+// void MainWindow::fixGLViewport()
+// {
+//     for (auto chart: chartList)
+//     {
+//         const qreal dpr = chart->getCustomPlot()->devicePixelRatioF();
+//         QRect r = chart->getCustomPlot()->rect();
+//         r.setWidth (qRound(r.width()  / dpr));
+//         r.setHeight(qRound(r.height() / dpr));
+//         chart->getCustomPlot()->setViewport(r);
+//
+//         // 字体大小用“逻辑像素”指定，不再被 Qt 放大
+//         int pt = 9;                                    // 你想要的几号字就写几
+//         QFont f = font();                              // 继承主窗口字体
+//         f.setPointSize(pt);
+//         chart->getCustomPlot()->xAxis->setLabelFont(f);
+//         chart->getCustomPlot()->yAxis->setLabelFont(f);
+//         chart->getCustomPlot()->xAxis->setTickLabelFont(f);
+//         chart->getCustomPlot()->yAxis->setTickLabelFont(f);
+//         chart->getCustomPlot()->legend->setFont(f);
+//         chart->getCustomPlot()->replot();                      // 立刻刷新一次
+//     }
+//
+// }

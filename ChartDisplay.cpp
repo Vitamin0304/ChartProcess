@@ -37,6 +37,9 @@ ChartDisplay::ChartDisplay(QWidget* parent, QCustomPlot* customPlot, QScrollBar*
 //        gridLayout->addWidget(hScrollBar);
 //    }
 
+    // pCustomPlot->setAntialiasedElements(QCP::aeNone); // 全局关闭抗锯齿
+    pCustomPlot->setPlottingHints(QCP::phCacheLabels);
+
     xShowRange = pCustomPlot->xAxis->range();
 
     // QFont font(QString::fromUtf8("Microsoft YaHei"), 9);
@@ -138,8 +141,8 @@ ChartDisplay::ChartDisplay(QWidget* parent, QCustomPlot* customPlot, QScrollBar*
     //重绘 每次改变完以后都要调用这个进行重新绘制
     replot();
 
-    if(!pCustomPlot->openGl())
-        pCustomPlot->setOpenGl(true);
+    // if(!pCustomPlot->openGl())
+    //     pCustomPlot->setOpenGl(true);
     qDebug() << "opengl:" << pCustomPlot->openGl();
 
     qRegisterMetaType<uint32_t>("uint32_t");
