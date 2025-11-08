@@ -74,15 +74,19 @@ class ZmqSubThread : public QThread
 {
     Q_OBJECT
 public:
-    ZmqSubThread();
+    explicit ZmqSubThread(QObject *parent = nullptr);
     ~ZmqSubThread();
+
 protected:
     void run() override;
 
 signals:
-    void receiveStateDataSignal(DisplayDataStruct displayDataStruct);
-    void receiveATPDataSignal(ATPSensorData atpSensorData);
-    void receiveWebotsDataSignal(WebotsData webotsData);
+    void receiveStateDataSignal(DisplayDataStruct  displayData);
+    void receiveATPDataSignal   (ATPSensorData     atpData);
+    void receiveWebotsDataSignal(WebotsData        webotsData);
+
+private:
+    volatile bool m_stop = false;   // 用于打断循环
 };
 
 

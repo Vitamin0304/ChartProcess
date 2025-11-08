@@ -42,13 +42,14 @@ target_compile_definitions(ChartProcess PRIVATE
 target_include_directories(ChartProcess PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}          # 当前目录放 qcustomplot.h
         C:/WorkSpace/eigen-3.3.9               # 你用的 Eigen
-        C:/WorkSpace/Qt/libzmq-mingw64-4_3_4                    # ZeroMQ 头文件
+        C:/WorkSpace/Qt/zmq                    # ZeroMQ 头文件
+        C:/WorkSpace/nlohmannJson/include
 )
 
-# ---------- 库目录（仅 ZeroMQ） ----------
-target_link_directories(ChartProcess PRIVATE
-        C:/WorkSpace/Qt/libzmq-mingw64-4_3_4                    # 放 64-bit libzmq.a / libzmq.dll.a
-)
+## ---------- 库目录（仅 ZeroMQ） ----------
+#target_link_directories(ChartProcess PRIVATE
+#        C:/WorkSpace/Qt/libzmq-mingw64-4_3_4                    # 放 64-bit libzmq.a / libzmq.dll.a
+#)
 
 # ---------- 链接库 ----------
 target_link_libraries(ChartProcess PRIVATE
@@ -62,8 +63,9 @@ target_link_libraries(ChartProcess PRIVATE
         # 系统自带
         opengl32
         DbgHelp
-        # ZeroMQ（MinGW-64 版，名字举例）
-        zmq
+        C:/WorkSpace/Qt/zmq/libzmq-v140-mt-s-4_3_4.lib
+        C:/WorkSpace/Qt/zmq/libzmq-v140-mt-4_3_4.lib
+        ws2_32 iphlpapi
 )
 
 # ---------- Win 下自动拷贝 Qt 运行时 ----------

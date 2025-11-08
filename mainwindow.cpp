@@ -2,6 +2,8 @@
 #include "./ui_mainwindow.h"
 #include "ZmqSubThread.h"
 
+#include "zmq.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,14 +26,13 @@ MainWindow::MainWindow(QWidget *parent)
     chart4 = new ChartDisplay(this, ui->chart4, nullptr,
                               ui->clearButton, ui->manualButton, ui->translationButton, ui->stretchButton);
 
-    connect(ui->globalButton, &QPushButton::clicked, chart1, &ChartDisplay::viewGlobal);
-    connect(ui->globalButton, &QPushButton::clicked, chart2, &ChartDisplay::viewGlobal);
-    connect(ui->globalButton, &QPushButton::clicked, chart3, &ChartDisplay::viewGlobal);
-    connect(ui->globalButton, &QPushButton::clicked, chart4, &ChartDisplay::viewGlobal);
-    connect(ui->nowButton, &QPushButton::clicked, chart1, &ChartDisplay::followCurrent);
-    connect(ui->nowButton, &QPushButton::clicked, chart2, &ChartDisplay::followCurrent);
-    connect(ui->nowButton, &QPushButton::clicked, chart3, &ChartDisplay::followCurrent);
-    connect(ui->nowButton, &QPushButton::clicked, chart4, &ChartDisplay::followCurrent);
+    chartList << chart1 << chart2 << chart3 << chart4;
+
+    for(auto* chartDisplay : chartList)
+    {
+        connect(ui->globalButton, &QPushButton::clicked, chartDisplay, &ChartDisplay::viewGlobal);
+        connect(ui->nowButton, &QPushButton::clicked, chartDisplay, &ChartDisplay::followCurrent);
+    }
 
     //曲线显示线程
     for (auto & t : chartThread)
@@ -57,8 +58,6 @@ MainWindow::MainWindow(QWidget *parent)
     QStringList motor2Names = {"输入", "速度", "位置", "力矩指令", "偏差", "角度引导"}; //chart2
     QStringList error1Name = {"横向脱靶量", "陀螺仪Z角速度", "cpu"};  //chart1
     QStringList error2Name = {"纵向脱靶量", "陀螺仪X角速度", "陀螺仪Y角速度", "ATP状态"};  //chart3
-
-    chartList << chart1 << chart2 << chart3 << chart4;
 
     colorList.append(Qt::red);
     colorList.append(Qt::blue);
@@ -97,7 +96,8 @@ MainWindow::MainWindow(QWidget *parent)
     }, Qt::QueuedConnection);
     qRegisterMetaType<QVector<QCustomPlot *> >("QVector<QCustomPlot *>");
 
-    zmqSubThread = new ZmqSubThread();
+    zmqSubThread = new ZmqSubThread(this);
+    connect(zmqSubThread, &ZmqSubThread::finished, zmqSubThread, &QObject::deleteLater);
 
     qRegisterMetaType<DisplayDataStruct>("DisplayDataStruct");
     qRegisterMetaType<ATPSensorData>("ATPSensorData");
