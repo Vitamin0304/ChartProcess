@@ -79,6 +79,7 @@ struct RobotPoseFrame {
     Pose6D error;
     Pose6D cmd;
     Pose6D now;
+    Pose6D vel;
 };
 
 class ZmqSubThread : public QThread

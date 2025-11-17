@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent)
     // QStringList error1Name = {"横向脱靶量", "陀螺仪Z角速度", "cpu"};  //chart1
     // QStringList error2Name = {"纵向脱靶量", "陀螺仪X角速度", "陀螺仪Y角速度", "ATP状态"};  //chart3
 
-    QStringList robotNames = {"指令", "状态", "误差"};
+    QStringList robotNames = {"指令", "位姿", "误差", "速度"};
 
     colorList.append(Qt::red);
     colorList.append(Qt::blue);
@@ -114,26 +114,32 @@ MainWindow::MainWindow(QWidget *parent)
         emit chartList[0]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.x);
         emit chartList[0]->addDataSignal(1, robotPose.timestamp, robotPose.now.x);
         emit chartList[0]->addDataSignal(2, robotPose.timestamp, robotPose.error.x);
+        emit chartList[0]->addDataSignal(3, robotPose.timestamp, robotPose.vel.x);
 
         emit chartList[1]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.y);
         emit chartList[1]->addDataSignal(1, robotPose.timestamp, robotPose.now.y);
         emit chartList[1]->addDataSignal(2, robotPose.timestamp, robotPose.error.y);
+        emit chartList[1]->addDataSignal(3, robotPose.timestamp, robotPose.vel.y);
 
         emit chartList[2]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.z);
         emit chartList[2]->addDataSignal(1, robotPose.timestamp, robotPose.now.z);
         emit chartList[2]->addDataSignal(2, robotPose.timestamp, robotPose.error.z);
+        emit chartList[2]->addDataSignal(3, robotPose.timestamp, robotPose.vel.z);
 
         emit chartList[3]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.ax);
         emit chartList[3]->addDataSignal(1, robotPose.timestamp, robotPose.now.ax);
         emit chartList[3]->addDataSignal(2, robotPose.timestamp, robotPose.error.ax);
+        emit chartList[3]->addDataSignal(3, robotPose.timestamp, robotPose.vel.ax);
 
         emit chartList[4]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.ay);
         emit chartList[4]->addDataSignal(1, robotPose.timestamp, robotPose.now.ay);
         emit chartList[4]->addDataSignal(2, robotPose.timestamp, robotPose.error.ay);
+        emit chartList[4]->addDataSignal(3, robotPose.timestamp, robotPose.vel.ay);
 
         emit chartList[5]->addDataSignal(0, robotPose.timestamp, robotPose.cmd.az);
         emit chartList[5]->addDataSignal(1, robotPose.timestamp, robotPose.now.az);
         emit chartList[5]->addDataSignal(2, robotPose.timestamp, robotPose.error.az);
+        emit chartList[5]->addDataSignal(3, robotPose.timestamp, robotPose.vel.az);
     });
 
     zmqSubThread->start();

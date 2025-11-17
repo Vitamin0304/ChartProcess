@@ -96,7 +96,7 @@ void ChartDataSave::saveData()
 
             QTextStream out(&file);
 
-            out << "x," << graphName << "\n";
+            out << "time," << graphName << "\n";
 
             for(int k = 0; k < dataCount; k++)
             {

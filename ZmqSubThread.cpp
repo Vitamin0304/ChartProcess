@@ -65,6 +65,7 @@ void ZmqSubThread::run()
         f.error = readPose(j["pose_error"]);
         f.cmd   = readPose(j["pose_cmd"]);
         f.now   = readPose(j["pose_now"]);
+        f.vel   = readPose(j["vel_now"]);
 
         /* 直接发给 UI（Qt::QueuedConnection 自动跨线程） */
         emit receiveRobotPoseSignal(f);
