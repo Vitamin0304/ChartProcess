@@ -26,7 +26,7 @@ void ZmqSubThread::run()
     void *subscriber = zmq_socket(context, ZMQ_SUB);
 
     int rc = zmq_connect(subscriber, "tcp://localhost:5555");
-    qDebug() << "zmq subscribe tcp://192.168.1.219:5555" << rc;
+    qDebug() << "zmq subscribe tcp://localhost:5555" << rc;
 
     zmq_setsockopt(subscriber, ZMQ_SUBSCRIBE, NULL, 0);
 
