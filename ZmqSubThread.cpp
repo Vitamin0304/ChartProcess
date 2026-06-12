@@ -63,9 +63,9 @@ void ZmqSubThread::run()
         f.timestamp = j.value("timestamp", 0.0);
         f.cmd   = readPose(j["pose_cmd"]);
         f.now   = readPose(j["pose_now"]);
-        f.wrench_cmd   = readPose(j["wrench_cmd"]);
-        f.ext_force = readPose(j["ext_force"]);
-        f.ext_force_est = readPose(j["ext_force_est"]);
+        f.joint_pos   = readPose(j["joint_pos"]);
+        f.actions = readPose(j["actions"]);
+        f.pose_error = readPose(j["pose_error"]);
 
         /* 直接发给 UI（Qt::QueuedConnection 自动跨线程） */
         emit receiveRobotPoseSignal(f);
