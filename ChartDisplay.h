@@ -36,6 +36,8 @@ private:
     //从零开始没有任何操作的状态
     bool initialState = true;
 
+	double m_lastAddedX = -1.0; // 用于极速记录最后一次添加的时间戳
+
 public:
 	ChartDisplay(QWidget* parent, QCustomPlot* customPlot, QScrollBar* scrollBar,
                  QPushButton* clearButton, QRadioButton* manualButton = nullptr,

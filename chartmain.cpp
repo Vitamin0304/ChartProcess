@@ -15,6 +15,14 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 
+    // 在创建 QApplication 之前设置默认的 OpenGL 格式
+    QSurfaceFormat format;
+    format.setRenderableType(QSurfaceFormat::OpenGL);
+    format.setProfile(QSurfaceFormat::CoreProfile);
+    format.setVersion(3, 3);
+    // format.setShareContext(false); // 在某些 Qt 版本中可以尝试不共享上下文
+    QSurfaceFormat::setDefaultFormat(format);
+
     // QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
 
     // QTranslator translator;

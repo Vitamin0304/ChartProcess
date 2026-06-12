@@ -274,9 +274,17 @@ void ChartDisplay::addData(uint32_t graphIndex, double x, double y)
 {
 //    qDebug()<<"ChartDisplay::addData thread:"<<QThread::currentThreadId();
 //    qDebug()<<"x="<< x <<", y=" << y;
-    bool foundxRange;
-    if(x < pCustomPlot->graph(graphIndex)->getKeyRange(foundxRange, QCP::sdBoth).upper)
-        emit clearSignal();
+    // bool foundxRange;
+    // if(x < pCustomPlot->graph(graphIndex)->getKeyRange(foundxRange, QCP::sdBoth).upper)
+    //     emit clearSignal();
+
+    if (graphIndex == 0)
+    {
+        if (m_lastAddedX >= 0.0 && x < m_lastAddedX) {
+            emit clearSignal(); // 发现时间倒流，触发清空
+        }
+        m_lastAddedX = x; // 更新最新时间戳
+    }
 
     pCustomPlot->graph(graphIndex)->addData(x, y);
     if (dynamic && !xGraphsRange.contains(x)) //如果是动态图
@@ -490,6 +498,8 @@ void ChartDisplay::on_clear_clicked()
 
     viewGlobal();
     initialState = true;
+
+    m_lastAddedX = -1.0;
 
 //    emit replotSignal();
 }

@@ -76,10 +76,11 @@ struct Pose6D {
 };
 struct RobotPoseFrame {
     double timestamp;
-    Pose6D error;
     Pose6D cmd;
     Pose6D now;
-    Pose6D vel;
+    Pose6D wrench_cmd;
+    Pose6D ext_force;
+    Pose6D ext_force_est;
 };
 
 class ZmqSubThread : public QThread

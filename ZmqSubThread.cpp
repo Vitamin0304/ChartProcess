@@ -31,6 +31,18 @@ void ZmqSubThread::run()
     /* 订阅所有消息（空串） */
     zmq_setsockopt(subscriber, ZMQ_SUBSCRIBE, "", 0);
 
+    /* 工具 lambda：把 json 子对象 → Pose6D */
+    auto readPose = [](const nlohmann::json& obj) -> Pose6D {
+        Pose6D p{};
+        p.x  = obj.value("x", 0.0);
+        p.y  = obj.value("y", 0.0);
+        p.z  = obj.value("z", 0.0);
+        p.ax = obj.value("axis_angle_x", 0.0);
+        p.ay = obj.value("axis_angle_y", 0.0);
+        p.az = obj.value("axis_angle_z", 0.0);
+        return p;
+    };
+
     /* 循环收纯文本帧 */
     while (!m_stop)
     {
@@ -49,23 +61,11 @@ void ZmqSubThread::run()
         /* 解析顶层时间戳 */
         RobotPoseFrame f;
         f.timestamp = j.value("timestamp", 0.0);
-
-        /* 工具 lambda：把 json 子对象 → Pose6D */
-        auto readPose = [](const nlohmann::json& obj) -> Pose6D {
-            Pose6D p{};
-            p.x  = obj.value("x", 0.0);
-            p.y  = obj.value("y", 0.0);
-            p.z  = obj.value("z", 0.0);
-            p.ax = obj.value("axis_angle_x", 0.0);
-            p.ay = obj.value("axis_angle_y", 0.0);
-            p.az = obj.value("axis_angle_z", 0.0);
-            return p;
-        };
-
-        f.error = readPose(j["pose_error"]);
         f.cmd   = readPose(j["pose_cmd"]);
         f.now   = readPose(j["pose_now"]);
-        f.vel   = readPose(j["vel_now"]);
+        f.wrench_cmd   = readPose(j["wrench_cmd"]);
+        f.ext_force = readPose(j["ext_force"]);
+        f.ext_force_est = readPose(j["ext_force_est"]);
 
         /* 直接发给 UI（Qt::QueuedConnection 自动跨线程） */
         emit receiveRobotPoseSignal(f);
