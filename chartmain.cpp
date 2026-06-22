@@ -41,7 +41,11 @@ int main(int argc, char *argv[])
     QString styleSheet { file.readAll() };
     qApp->setStyleSheet(styleSheet);
 
+#ifdef Q_OS_WIN
     QFont font("微软雅黑",11);
+#else
+    QFont font("Noto Sans CJK SC",11);
+#endif
     QApplication::setFont(font);
 
     MainWindow w;

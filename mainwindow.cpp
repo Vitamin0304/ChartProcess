@@ -154,7 +154,7 @@ MainWindow::MainWindow(QWidget *parent)
     timer1->start();
 
     QString strExePath = QCoreApplication::applicationDirPath();
-    QString strSettingInfo = strExePath + "\\SettingInfo.ini";
+    QString strSettingInfo = strExePath + "/SettingInfo.ini";
     QSettings settings(strSettingInfo, QSettings::IniFormat);// 当前目录的SetInfo.ini文件，一定要添加第二个参数为IniFormat
     settings.beginGroup("Process");
     WId windowID = this->winId();

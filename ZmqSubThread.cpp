@@ -23,7 +23,7 @@ void ZmqSubThread::run()
     void *context = zmq_ctx_new();
     void *subscriber = zmq_socket(context, ZMQ_SUB);
     std::cout << "sub zmq!";
-    int rc = zmq_connect(subscriber, "tcp://192.168.1.43:5558");
+    int rc = zmq_connect(subscriber, "tcp://127.0.0.1:5558");
     std::cout << "connect zmq!";
     qDebug() << "zmq connect rc =" << rc;
 
@@ -31,15 +31,22 @@ void ZmqSubThread::run()
     /* 订阅所有消息（空串） */
     zmq_setsockopt(subscriber, ZMQ_SUBSCRIBE, "", 0);
 
-    /* 工具 lambda：把 json 子对象 → Pose6D */
+    /* 工具 lambda：把 json 子对象 → Pose6D（容错版） */
     auto readPose = [](const nlohmann::json& obj) -> Pose6D {
         Pose6D p{};
-        p.x  = obj.value("x", 0.0);
-        p.y  = obj.value("y", 0.0);
-        p.z  = obj.value("z", 0.0);
-        p.ax = obj.value("axis_angle_x", 0.0);
-        p.ay = obj.value("axis_angle_y", 0.0);
-        p.az = obj.value("axis_angle_z", 0.0);
+        auto safeNum = [&](const char* key) -> double {
+            if (!obj.contains(key)) return 0.0;
+            const auto& v = obj[key];
+            if (v.is_number()) return v.get<double>();
+            if (v.is_array() && !v.empty() && v[0].is_number()) return v[0].get<double>();
+            return 0.0;
+        };
+        p.x  = safeNum("x");
+        p.y  = safeNum("y");
+        p.z  = safeNum("z");
+        p.ax = safeNum("axis_angle_x");
+        p.ay = safeNum("axis_angle_y");
+        p.az = safeNum("axis_angle_z");
         return p;
     };
 
@@ -60,12 +67,18 @@ void ZmqSubThread::run()
 
         /* 解析顶层时间戳 */
         RobotPoseFrame f;
-        f.timestamp = j.value("timestamp", 0.0);
-        f.cmd   = readPose(j["pose_cmd"]);
-        f.now   = readPose(j["pose_now"]);
-        f.joint_pos   = readPose(j["joint_pos"]);
-        f.actions = readPose(j["actions"]);
-        f.pose_error = readPose(j["pose_error"]);
+        try {
+            f.timestamp = j.value("timestamp", 0.0);
+            f.cmd   = readPose(j.value("pose_cmd", nlohmann::json::object()));
+            f.now   = readPose(j.value("pose_now", nlohmann::json::object()));
+            f.joint_pos   = readPose(j.value("joint_pos", nlohmann::json::object()));
+            f.actions = readPose(j.value("actions", nlohmann::json::object()));
+            f.pose_error = readPose(j.value("pose_error", nlohmann::json::object()));
+        } catch (const nlohmann::json::exception& e) {
+            qDebug() << "[ZMQ] JSON parse error:" << e.what();
+            qDebug() << "[ZMQ] raw:" << QString::fromStdString(jsonStr).left(500);
+            continue;
+        }
 
         /* 直接发给 UI（Qt::QueuedConnection 自动跨线程） */
         emit receiveRobotPoseSignal(f);
